@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, {useEffect, useState, useLayoutEffect } from "react";
 import "../styles/App.css";
 
 export default function App(){
@@ -6,33 +6,27 @@ export default function App(){
   const [x,setX]=useState(0);
   const [y,setY]=useState(0);
   const [time,setTime]=useState(0);
+  const [me,setMe]=useState(false);
+  const [count,setCount]=useState(0);
 const my=()=>setInterval(()=>setTime(i=>i+1),1000);
 const move = (e)=>{
   if(e.key==='ArrowUp')setY(y-5);
-  else if(e.key==='ArrowDown')setY(y+5);
-  else if(e.key==='ArrowLeft')setX(x-5);
-  else if(e.key==='ArrowRight')setX(x+5);
-  console.log(e.key)
-  if(x===250 && y===250){setTime(time);clearInterval(my());}
+  if(e.key==='ArrowDown')setY(y+5);
+  if(e.key==='ArrowLeft')setX(x-5);
+  if(e.key==='ArrowRight')setX(x+5);
+  console.log(e.key,x,y)
+  if(x===250 && y===250){setMe(false);setCount(time);}
 }
-
-  useEffect(()=>{
-    window.addEventListener('keydown',(e)=>move(e));
-  },[time])
-
-  useEffect(()=>{
-    window.removeEventListener('keydown',move);
-  },[x,y]);
-  
+if(me)window.addEventListener('keydown',(e)=>move(e));
 
   return (
    <>
    <div className="ball" style={{top: y,left: x}}></div>
    <div className="hole"></div>
-   <div className="heading-timer">{time}</div>
+   <div className="heading-timer">{me? time:count}</div>
    <button className="start" onClick={()=>{
     my()
-  
+    setMe(true);
   }}>start</button>
   </>
       )
