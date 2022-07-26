@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useLayoutEffect } from "react";
+import React, {useState } from "react";
 import "../styles/App.css";
 
 export default function App(){
@@ -15,9 +15,10 @@ const move = (e)=>{
   if(e.key==='ArrowLeft')setX(x-5);
   if(e.key==='ArrowRight')setX(x+5);
   console.log(e.key,x,y)
-  if(x===250 && y===250){setMe(false);setCount(time);}
+  if(x===250 && y===250){setMe(false);setCount(time);
 }
-if(me)window.addEventListener('keydown',(e)=>move(e));
+}
+if(me===true && x!==255 && y!==255)window.addEventListener('keydown',(e)=>move(e));
 
   return (
    <>
@@ -26,7 +27,7 @@ if(me)window.addEventListener('keydown',(e)=>move(e));
    <div className="heading-timer">{me? time:count}</div>
    <button className="start" onClick={()=>{
     my()
-    setMe(true);
+    setMe(!me);
   }}>start</button>
   </>
       )
