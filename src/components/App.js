@@ -18,7 +18,7 @@ const move = (e)=>{
   if(x===250 && y===250){setMe(false);setCount(time);
 }
 }
-if(me===true && x!==255 && y!==255)window.addEventListener('keydown',(e)=>move(e));
+if(me===true && x!==250 && y!==250)window.addEventListener('keydown',(e)=>move(e));
 
   return (
    <>
