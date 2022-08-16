@@ -12,6 +12,9 @@ if(x===250 && y===250){
   window.removeEventListener('keydown',move.current)
 }
 const start = () => {
+  setTime(0);
+  setX(0);
+  setY(0);
   move.current = (e) =>{
     if(e.key==='ArrowUp')setY(y=>y-5);
     if(e.key==='ArrowDown')setY(y=>y+5);
