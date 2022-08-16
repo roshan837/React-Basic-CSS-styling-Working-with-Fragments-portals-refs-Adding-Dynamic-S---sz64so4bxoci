@@ -7,7 +7,6 @@ export default function App(){
   const [x,setX]=useState(0);
   const [y,setY]=useState(0);
   const [time,setTime]=useState(0);
-console.log(x,y,interval.current)
 if(x===250 && y===250){
   clearInterval(interval.current);
   window.removeEventListener('keydown',move.current)
@@ -15,9 +14,9 @@ if(x===250 && y===250){
 const start = () => {
   move.current = (e) =>{
     if(e.key==='ArrowUp')setY(y=>y-5);
-    else if(e.key==='ArrowDown')setY(y=>y+5);
-    else if(e.key==='ArrowLeft')setX(x=>x-5);
-    else if(e.key==='ArrowRight')setX(x=>x+5);
+    if(e.key==='ArrowDown')setY(y=>y+5);
+    if(e.key==='ArrowLeft')setX(x=>x-5);
+    if(e.key==='ArrowRight')setX(x=>x+5);
   }
   interval.current=setInterval(()=>setTime(time=>time+1),1000);
   window.addEventListener('keydown',move.current);
