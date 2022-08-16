@@ -23,7 +23,7 @@ const start = () => {
 }
   return (
    <>
-   <div className="ball" style={{top: y,left: x}}></div>
+   <div className="ball" style={{top: `${y}px`,left: `${x}px`}}></div>
    <div className="hole"></div>
    <div className="heading-timer">{time}</div>
    <button className="start" onClick={()=>start()}>start</button>
