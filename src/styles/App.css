@@ -31,7 +31,11 @@
   width: 50px;
   border-radius: 25px;
 }
-
+.start{
+  position: absolute;
+  top: 150px;
+  left: 150px;
+}
 
 .hole {
   background-color: rgb(62, 85, 107);
